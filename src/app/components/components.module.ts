@@ -4,20 +4,24 @@ import { GameComponent } from './game/game.component';
 import { InfoComponent } from './info/info.component';
 import { LockedCardComponent } from './locked-card/locked-card.component';
 import { ImprovementComponent } from './improvement/improvement.component';
+import { NavComponent } from './nav/nav.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     GameComponent,
     InfoComponent,
     LockedCardComponent,
-    ImprovementComponent
+    ImprovementComponent,
+    NavComponent
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [
     GameComponent,
     InfoComponent,
     LockedCardComponent,
-    ImprovementComponent
+    ImprovementComponent,
+    NavComponent
   ]
 })
 export class ComponentsModule {}

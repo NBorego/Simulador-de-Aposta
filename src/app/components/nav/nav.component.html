@@ -1,0 +1,23 @@
+<nav>
+  <ul class="links">
+    <li>
+      <a
+        [routerLink]="['']"
+        [routerLinkActive]="['active-link']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Jogos
+      </a>
+    </li>
+
+    <li>
+      <a [routerLink]="['melhorias']" [routerLinkActive]="['active-link']">
+        Melhorias
+      </a>
+    </li>
+
+    <li>
+      <a [routerLink]="['secreto']" [routerLinkActive]="['active-link']">???</a>
+    </li>
+  </ul>
+</nav>
