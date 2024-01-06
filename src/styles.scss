@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/variables';
+@import './scss/mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $text-color;
+  font-family: $default-font;
+}
+
+div,
+section,
+article {
+  border-radius: 0.3rem;
+}
+
+body {
+  @include displayFlex;
+
+  min-height: 100vh;
+  background-color: $background-1;
+}

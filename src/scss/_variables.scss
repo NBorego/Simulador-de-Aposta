@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+@font-face {
+  font-family: 'Casino';
+  src: url('../assets/fonts/casino-font/CasinoShadow.ttf');
+  font-weight: bold;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+// Primary Colors
+$green: #059669;
+$blue: #2563eb;
+$red: #dc2626;
+$yellow: #fbbf24;
+// Background Colors
+$background-1: #f1f5f9;
+$background-2: #e2e8f0;
+// Others
+$white: #fff;
+$gray: #9ca3af;
+$text-color: #0f172a;
+
+// Fonts
+$title-font: 'Casino', serif;
+$default-font: 'Inter', sans-serif;
