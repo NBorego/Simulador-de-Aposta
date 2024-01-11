@@ -4,24 +4,31 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ActionService {
+  private counters: { [key: number]: number } = {};
+
   constructor() {}
 
-  actionButton(textButton: string) {
-    let seconds: number = 3;
+  getAction(componentID: number): string {
+    this.counters[componentID] = 3;
+    return `${this.counters[componentID] || 0}`;
+  }
 
-    textButton = `${seconds}`;
-
+  startAction(
+    componentID: number,
+    callback: (action: string) => void
+  ): NodeJS.Timeout {
     const countSeconds = () => {
-      seconds--;
-      return (textButton = `${seconds}`);
+      this.counters[componentID]--;
+      callback(`${this.counters[componentID]}`);
     };
 
-    let interval: NodeJS.Timeout = setInterval(countSeconds, 1000);
+    const interval: NodeJS.Timeout = setInterval(countSeconds, 1000);
 
     setTimeout(() => {
       clearInterval(interval);
-
-      textButton = `Ação`;
+      callback(`Ação`);
     }, 3000);
+
+    return interval;
   }
 }
