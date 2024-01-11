@@ -1,1 +1,25 @@
-<p>game works!</p>
+<section>
+  <main>
+    <div class="title">
+      <h1>{{ title }}</h1>
+      <strong class="chance">
+        Chance: <span [ngClass]="changeColor(chance)">{{ chance }}%</span>
+      </strong>
+    </div>
+
+    <hr />
+
+    <div class="info">
+      <strong class="gain">
+        Ganho: <span>{{ convert(gain) }}</span>
+      </strong>
+      <strong class="loss">
+        Perda: <span>{{ convert(loss) }}</span>
+      </strong>
+    </div>
+  </main>
+
+  <button [ngClass]="['action', color]" (click)="actionButton()">
+    {{ action }}
+  </button>
+</section>

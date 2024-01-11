@@ -5,11 +5,11 @@
   @include displayFlex;
 
   min-height: 100vh;
-  background-color: $background-1;
   gap: 1rem;
+  margin: 1rem;
 
   .title-app {
     font-family: $title-font;
-    font-size: 3rem;
+    font-size: clamp(2rem, 0.8684rem + 4.2105vw, 3.5rem);
   }
 }

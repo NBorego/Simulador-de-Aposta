@@ -1,11 +1,12 @@
-/**
-  $justify: center
-  $items: center
-  $direction: column
-*/
 @mixin displayFlex($justify: center, $items: center, $direction: column) {
   display: flex;
   justify-content: $justify;
   align-items: $items;
   flex-direction: $direction;
+}
+
+@mixin buttonDarken($color, $amount) {
+  &:hover {
+    background-color: darken($color, $amount);
+  }
 }

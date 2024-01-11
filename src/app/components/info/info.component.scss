@@ -23,7 +23,7 @@ section {
   }
 
   main {
-    @include displayFlex($direction: row);
+    @include displayFlex();
 
     gap: 1rem;
     font-size: 1.2rem;

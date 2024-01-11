@@ -9,12 +9,26 @@
   font-family: $default-font;
 }
 
+button {
+  border: none;
+  font-family: $default-font;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $white;
+  cursor: pointer;
+}
+
 div,
 section,
-article {
+article,
+button {
   border-radius: 0.3rem;
 }
 
 a {
   text-decoration: none;
+}
+
+body {
+  background-color: $background-1;
 }

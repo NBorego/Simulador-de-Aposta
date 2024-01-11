@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConvertToBRLService } from 'src/app/services/convert-to-brl.service';
+import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
 
 @Component({
   selector: 'app-info',
@@ -17,7 +17,7 @@ export class InfoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  convert(): string {
-    return this.conversionService.convertToBRL(this.money);
+  convert(money: number): string {
+    return this.conversionService.convertToBRL(money);
   }
 }
