@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action/action.service';
 import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-game',
@@ -16,7 +17,6 @@ export class GameComponent implements OnInit, OnDestroy {
   action: string = 'Ação';
   color: string = '$white';
   interval?: NodeJS.Timeout;
-  clicked: boolean = false;
 
   constructor(
     private conversionService: ConvertToBRLService,
@@ -37,11 +37,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   actionButton() {
-    if (
-      this.actionService.clicked &&
-      this.actionService.counters[this.ID] === this.ID
-    )
-      return;
+    if (environment.COMPONENT_WAS_CLICKED(this.actionService.clicked)) return;
 
     this.action = this.actionService.getAction(this.ID);
 

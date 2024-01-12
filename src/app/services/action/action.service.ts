@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AttributesService } from '../attributes/attributes.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,7 @@ export class ActionService {
     componentID: number,
     callback: (action: string) => void
   ): NodeJS.Timeout | undefined {
-    if (this.clicked === true && this.counters[componentID] === componentID) {
-      return;
-    }
+    if (environment.COMPONENT_WAS_CLICKED(this.clicked)) return;
 
     const countSeconds = () => {
       this.counters[componentID]--;
@@ -30,10 +29,11 @@ export class ActionService {
 
     const interval: NodeJS.Timeout = setInterval(countSeconds, 1000);
 
-    if (this.counters[componentID] === componentID) this.clicked = true;
+    this.clicked = true;
 
     setTimeout(() => {
       clearInterval(interval);
+
       this.clicked = false;
 
       this.attributes.money += 5;
