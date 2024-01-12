@@ -16,6 +16,7 @@ export class GameComponent implements OnInit, OnDestroy {
   action: string = 'Ação';
   color: string = '$white';
   interval?: NodeJS.Timeout;
+  clicked: boolean = false;
 
   constructor(
     private conversionService: ConvertToBRLService,
@@ -36,6 +37,12 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   actionButton() {
+    if (
+      this.actionService.clicked &&
+      this.actionService.counters[this.ID] === this.ID
+    )
+      return;
+
     this.action = this.actionService.getAction(this.ID);
 
     const callback = (newAction: string) => (this.action = newAction);

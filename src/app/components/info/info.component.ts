@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AttributesService } from 'src/app/services/attributes/attributes.service';
+
 import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
 
 @Component({
@@ -7,13 +9,10 @@ import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent implements OnInit {
-  money: number = 999999.99;
-
-  level: number = 10;
-  currentXP: number = 12;
-  maxXP: number = 100;
-
-  constructor(private conversionService: ConvertToBRLService) {}
+  constructor(
+    private conversionService: ConvertToBRLService,
+    public attributes: AttributesService
+  ) {}
 
   ngOnInit(): void {}
 

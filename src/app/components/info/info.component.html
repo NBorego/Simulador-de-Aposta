@@ -4,11 +4,11 @@
   </header>
 
   <main>
-    <div class="info-money">{{ convert(money) }}</div>
+    <div class="info-money">{{ convert(attributes.money) }}</div>
 
     <div class="level-component">
-      <span class="level">Nível: {{ level }}</span>
-      <span class="xp">{{ currentXP }}/{{ maxXP }}</span>
+      <span class="level">Nível: {{ attributes.level }}</span>
+      <span class="xp">{{ attributes.currentXP }}/{{ attributes.maxXP }}</span>
     </div>
   </main>
 </section>
