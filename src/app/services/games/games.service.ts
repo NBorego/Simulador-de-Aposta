@@ -1,0 +1,70 @@
+import { Injectable } from '@angular/core';
+import { Game } from 'src/types/games';
+import { AttributesService } from '../attributes/attributes.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GamesService {
+  public games = <Game[]>[
+    {
+      id: 1,
+      name: 'Trabalhar',
+      gain: 5,
+      loss: 0,
+      chance: 100,
+      level: 0
+    },
+    {
+      id: 2,
+      name: 'Apostar no truco',
+      gain: 25,
+      loss: 5,
+      chance: 50,
+      level: 0
+    },
+    {
+      id: 3,
+      name: 'Jogar no bicho',
+      gain: 50,
+      loss: 15,
+      chance: 30,
+      level: 5
+    },
+    {
+      id: 4,
+      name: 'Jogo do tigrinho',
+      gain: 80,
+      loss: 40,
+      chance: 20,
+      level: 10
+    },
+    {
+      id: 5,
+      name: 'Apostar em rinha de galo',
+      gain: 100,
+      loss: 60,
+      chance: 20,
+      level: 15
+    },
+    {
+      id: 6,
+      name: 'Bet',
+      gain: 200,
+      loss: 50,
+      chance: 33,
+      level: 20
+    }
+  ];
+  constructor(public attributes: AttributesService) {}
+
+  bet(result: number, id: number) {
+    if (result <= this.games[id].chance) {
+      this.attributes.money += this.games[id].gain;
+    } else {
+      this.attributes.money -= this.games[id].loss;
+
+      if (this.attributes.money < 0) this.attributes.money = 0;
+    }
+  }
+}

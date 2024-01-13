@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action/action.service';
 import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
+import { GamesService } from 'src/app/services/games/games.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Component({
@@ -9,18 +10,15 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit, OnDestroy {
-  @Input() ID: number = 0;
-  title: string = 'trabalar...';
-  chance: number = 100;
-  gain: number = 5;
-  loss: number = 0;
+  @Input() id: number = 0;
   action: string = 'Ação';
   color: string = '$white';
   interval?: NodeJS.Timeout;
 
   constructor(
     private conversionService: ConvertToBRLService,
-    private actionService: ActionService
+    private actionService: ActionService,
+    public gamesService: GamesService
   ) {}
 
   ngOnInit(): void {}
@@ -39,11 +37,16 @@ export class GameComponent implements OnInit, OnDestroy {
   actionButton() {
     if (environment.COMPONENT_WAS_CLICKED(this.actionService.clicked)) return;
 
-    this.action = this.actionService.getAction(this.ID);
+    this.action = this.actionService.getAction(
+      this.gamesService.games[this.id].id
+    );
 
     const callback = (newAction: string) => (this.action = newAction);
 
-    this.interval = this.actionService.startAction(this.ID, callback);
+    this.interval = this.actionService.startAction(
+      this.gamesService.games[this.id].id,
+      callback
+    );
   }
 
   ngOnDestroy = (): void => this.interval && clearInterval(this.interval);

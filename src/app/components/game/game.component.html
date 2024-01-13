@@ -1,9 +1,12 @@
 <section>
   <main>
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>{{ gamesService.games[this.id].name }}</h1>
       <strong class="chance">
-        Chance: <span [ngClass]="changeColor(chance)">{{ chance }}%</span>
+        Chance:
+        <span [ngClass]="changeColor(gamesService.games[this.id].chance)">
+          {{ gamesService.games[this.id].chance }}%
+        </span>
       </strong>
     </div>
 
@@ -11,10 +14,10 @@
 
     <div class="info">
       <strong class="gain">
-        Ganho: <span>{{ convert(gain) }}</span>
+        Ganho: <span>{{ convert(gamesService.games[this.id].gain) }}</span>
       </strong>
       <strong class="loss">
-        Perda: <span>{{ convert(loss) }}</span>
+        Perda: <span>{{ convert(gamesService.games[this.id].loss) }}</span>
       </strong>
     </div>
   </main>
