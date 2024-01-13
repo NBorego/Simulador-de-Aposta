@@ -22,7 +22,11 @@
     </div>
   </main>
 
-  <button [ngClass]="['action', color]" (click)="actionButton()">
+  <button
+    class="action"
+    [ngStyle]="{ 'background-color': color }"
+    (click)="actionButton()"
+  >
     {{ action }}
   </button>
 </section>

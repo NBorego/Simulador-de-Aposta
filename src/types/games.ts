@@ -5,4 +5,5 @@ export interface Game {
   loss: number;
   chance: number;
   level: number;
+  clicked: boolean;
 }

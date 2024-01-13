@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AttributesService } from '../attributes/attributes.service';
-import { environment } from 'src/environments/environment.prod';
 import { GamesService } from '../games/games.service';
 
 @Injectable({
@@ -8,7 +7,7 @@ import { GamesService } from '../games/games.service';
 })
 export class ActionService {
   public counters: { [key: number]: number } = {};
-  public clicked: boolean = false;
+  public color: string = '#2563eb';
 
   constructor(
     public attributes: AttributesService,
@@ -17,6 +16,7 @@ export class ActionService {
 
   getAction(componentID: number): string {
     this.counters[componentID] = 3;
+    this.color = '#2563eb';
     return `${this.counters[componentID] || 0}`;
   }
 
@@ -24,8 +24,6 @@ export class ActionService {
     componentID: number,
     callback: (action: string) => void
   ): NodeJS.Timeout | undefined {
-    if (environment.COMPONENT_WAS_CLICKED(this.clicked)) return;
-
     const countSeconds = () => {
       this.counters[componentID]--;
       callback(`${this.counters[componentID]}`);
@@ -33,25 +31,27 @@ export class ActionService {
 
     const interval: NodeJS.Timeout = setInterval(countSeconds, 1000);
 
-    this.clicked = true;
+    this.gamesService.games[componentID - 1].clicked = true;
 
     setTimeout(() => {
       clearInterval(interval);
 
-      this.clicked = false;
+      this.gamesService.games[componentID - 1].clicked = false;
 
       const result = Math.random() * (100 - 1) + 1;
 
-      this.gamesService.bet(result, componentID - 1);
+      const word: string = this.gamesService.bet(result, componentID - 1);
 
-      this.attributes.currentXP += 5;
+      this.color = this.gamesService.colorButton(word);
+
+      this.attributes.currentXP += 10;
 
       if (this.attributes.currentXP >= 100) {
         this.attributes.currentXP = 0;
         this.attributes.level++;
       }
 
-      callback(`Ação`);
+      callback(word);
     }, 3000);
 
     return interval;

@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActionService } from 'src/app/services/action/action.service';
+import { AttributesService } from 'src/app/services/attributes/attributes.service';
 import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
 import { GamesService } from 'src/app/services/games/games.service';
 import { environment } from 'src/environments/environment.prod';
@@ -12,13 +13,14 @@ import { environment } from 'src/environments/environment.prod';
 export class GameComponent implements OnInit, OnDestroy {
   @Input() id: number = 0;
   action: string = 'Ação';
-  color: string = '$white';
+  color: string = this.actionService.color;
   interval?: NodeJS.Timeout;
 
   constructor(
     private conversionService: ConvertToBRLService,
-    private actionService: ActionService,
-    public gamesService: GamesService
+    public actionService: ActionService,
+    public gamesService: GamesService,
+    public attributes: AttributesService
   ) {}
 
   ngOnInit(): void {}
@@ -35,7 +37,18 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   actionButton() {
-    if (environment.COMPONENT_WAS_CLICKED(this.actionService.clicked)) return;
+    if (this.gamesService.games[this.id].clicked === true) return;
+
+    this.color = '#2563eb';
+
+    if (this.attributes.money < this.gamesService.games[this.id].loss) {
+      alert(
+        `Voce precisa ter ${this.conversionService.convertToBRL(
+          this.gamesService.games[this.id].loss
+        )} para apostar!`
+      );
+      return;
+    }
 
     this.action = this.actionService.getAction(
       this.gamesService.games[this.id].id
@@ -47,6 +60,8 @@ export class GameComponent implements OnInit, OnDestroy {
       this.gamesService.games[this.id].id,
       callback
     );
+
+    setTimeout(() => (this.color = this.actionService.color), 3000);
   }
 
   ngOnDestroy = (): void => this.interval && clearInterval(this.interval);
