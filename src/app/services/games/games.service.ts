@@ -46,7 +46,7 @@ export class GamesService {
     },
     {
       id: 5,
-      name: 'Apostar em rinha de galo',
+      name: 'Rinha de galo',
       gain: 100,
       loss: 60,
       chance: 20,
@@ -63,19 +63,14 @@ export class GamesService {
       clicked: false
     }
   ];
+
   constructor(public attributes: AttributesService) {}
 
-  bet(result: number, id: number): string {
+  bet(result: number, id: number) {
     if (result <= this.games[id].chance) {
       this.attributes.money += this.games[id].gain;
-      return 'Ganhou!';
     }
 
     this.attributes.money -= this.games[id].loss;
-    return 'Perdeu!';
-  }
-
-  colorButton(word: string): string {
-    return word === 'Ganhou!' ? '#059669' : '#dc2626';
   }
 }

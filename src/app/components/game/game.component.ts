@@ -13,7 +13,6 @@ import { environment } from 'src/environments/environment.prod';
 export class GameComponent implements OnInit, OnDestroy {
   @Input() id: number = 0;
   action: string = 'Ação';
-  color: string = this.actionService.color;
   interval?: NodeJS.Timeout;
 
   constructor(
@@ -31,15 +30,13 @@ export class GameComponent implements OnInit, OnDestroy {
   changeColor(value: number): string {
     if (value < 30) return 'red';
 
-    if (value > 30 && value < 70) return 'yellow';
+    if (value >= 30 && value < 70) return 'yellow';
 
     return 'green';
   }
 
   actionButton() {
     if (this.gamesService.games[this.id].clicked === true) return;
-
-    this.color = '#2563eb';
 
     if (this.attributes.money < this.gamesService.games[this.id].loss) {
       alert(
@@ -60,8 +57,6 @@ export class GameComponent implements OnInit, OnDestroy {
       this.gamesService.games[this.id].id,
       callback
     );
-
-    setTimeout(() => (this.color = this.actionService.color), 3000);
   }
 
   ngOnDestroy = (): void => this.interval && clearInterval(this.interval);

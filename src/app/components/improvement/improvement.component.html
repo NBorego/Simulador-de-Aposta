@@ -1,1 +1,26 @@
-<p>improvement works!</p>
+<section>
+  <main>
+    <div class="title">
+      <h1>{{ improvement.improvements[this.id].name }}</h1>
+      <strong class="chance">
+        Chance:
+        <span> {{ improvement.improvements[this.id].chance }}% </span>
+      </strong>
+    </div>
+
+    <hr />
+  </main>
+
+  <button class="action" (click)="actionButton()">
+    <span
+      *ngIf="improvement.improvements[this.id].buy; else priceSpan"
+      class="buy"
+    >
+      Comprado
+    </span>
+
+    <ng-template #priceSpan>
+      <span>{{ convert(improvement.improvements[this.id].price) }}</span>
+    </ng-template>
+  </button>
+</section>

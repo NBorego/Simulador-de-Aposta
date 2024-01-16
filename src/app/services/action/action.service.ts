@@ -40,9 +40,7 @@ export class ActionService {
 
       const result = Math.random() * (100 - 1) + 1;
 
-      const word: string = this.gamesService.bet(result, componentID - 1);
-
-      this.color = this.gamesService.colorButton(word);
+      this.gamesService.bet(result, componentID - 1);
 
       this.attributes.currentXP += 10;
 
@@ -51,7 +49,7 @@ export class ActionService {
         this.attributes.level++;
       }
 
-      callback(word);
+      callback('Ação');
     }, 3000);
 
     return interval;

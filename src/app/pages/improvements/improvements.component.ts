@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from 'src/app/services/games/games.service';
+import { ImprovementService } from 'src/app/services/improvement/improvement.service';
 
 @Component({
   selector: 'app-improvements',
@@ -6,10 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./improvements.component.scss']
 })
 export class ImprovementsComponent implements OnInit {
+  constructor(public improvement: ImprovementService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

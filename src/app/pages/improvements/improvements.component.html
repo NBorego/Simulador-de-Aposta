@@ -1,1 +1,7 @@
-<p>improvements works!</p>
+<section>
+  <app-improvement
+    *ngFor="let improvement of improvement.improvements"
+    [id]="improvement.id - 1"
+  >
+  </app-improvement>
+</section>

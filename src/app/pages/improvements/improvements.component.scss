@@ -1,0 +1,13 @@
+@import 'src/scss/_variables.scss';
+@import 'src/scss/_mixins.scss';
+
+section {
+  @include displayFlex();
+
+  width: 100%;
+  gap: 1.2rem;
+  padding: 1rem;
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
+  box-shadow: 0px 3px 10px rgba($text-color, 0.3);
+  background-color: $white;
+}
