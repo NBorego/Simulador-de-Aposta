@@ -25,7 +25,11 @@ export class ImprovementComponent implements OnInit {
     this.conversionService.convertToBRL(money);
 
   actionButton() {
-    if (this.improvement.improvements[this.id].buy) return;
+    if (
+      this.improvement.improvements[this.id].buy ||
+      this.attributes.money < this.improvement.improvements[this.id].price
+    )
+      return;
 
     this.improvement.improvements[this.id].buy = true;
     this.attributes.money -= this.improvement.improvements[this.id].price;

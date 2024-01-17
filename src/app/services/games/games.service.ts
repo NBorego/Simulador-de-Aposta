@@ -69,8 +69,8 @@ export class GamesService {
   bet(result: number, id: number) {
     if (result <= this.games[id].chance) {
       this.attributes.money += this.games[id].gain;
+    } else {
+      this.attributes.money -= this.games[id].loss;
     }
-
-    this.attributes.money -= this.games[id].loss;
   }
 }

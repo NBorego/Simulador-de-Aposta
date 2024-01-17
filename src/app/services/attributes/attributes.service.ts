@@ -10,7 +10,7 @@ export class AttributesService {
   public maxXP: number;
 
   constructor() {
-    this.money = 999999;
+    this.money = 0;
     this.level = 1;
     this.currentXP = 0;
     this.maxXP = 100;
