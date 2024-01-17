@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { GamesService } from 'src/app/services/games/games.service';
+import { Component } from '@angular/core';
+
 import { ImprovementService } from 'src/app/services/improvement/improvement.service';
 
 @Component({
@@ -7,8 +7,6 @@ import { ImprovementService } from 'src/app/services/improvement/improvement.ser
   templateUrl: './improvements.component.html',
   styleUrls: ['./improvements.component.scss']
 })
-export class ImprovementsComponent implements OnInit {
+export class ImprovementsComponent {
   constructor(public improvement: ImprovementService) {}
-
-  ngOnInit(): void {}
 }

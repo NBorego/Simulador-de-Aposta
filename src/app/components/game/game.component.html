@@ -22,7 +22,20 @@
     </div>
   </main>
 
-  <button class="action" (click)="actionButton()">
-    {{ action }}
-  </button>
+  <span
+    *ngIf="
+      this.attributes.level < this.gamesService.games[this.id].level;
+      else buttonAction
+    "
+    class="action"
+  >
+    Requer Nível {{ this.gamesService.games[this.id].level }}
+  </span>
+
+  <ng-template #buttonAction>
+    <button class="action" (click)="actionButton()">
+      <span> </span>
+      {{ action }}
+    </button>
+  </ng-template>
 </section>

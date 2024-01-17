@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GamesService } from 'src/app/services/games/games.service';
 
 @Component({
@@ -6,8 +6,6 @@ import { GamesService } from 'src/app/services/games/games.service';
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss']
 })
-export class GamesComponent implements OnInit {
+export class GamesComponent {
   constructor(public gamesService: GamesService) {}
-
-  ngOnInit(): void {}
 }

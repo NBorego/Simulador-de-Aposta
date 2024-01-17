@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AttributesService } from 'src/app/services/attributes/attributes.service';
 
 import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
@@ -8,13 +8,11 @@ import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.scss']
 })
-export class InfoComponent implements OnInit {
+export class InfoComponent {
   constructor(
     private conversionService: ConvertToBRLService,
     public attributes: AttributesService
   ) {}
-
-  ngOnInit(): void {}
 
   convert(money: number): string {
     return this.conversionService.convertToBRL(money);
