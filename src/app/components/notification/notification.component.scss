@@ -1,0 +1,39 @@
+@import 'src/scss/_variables.scss';
+@import 'src/scss/_mixins.scss';
+
+.background {
+  @include displayFlex;
+  width: 100vw;
+  height: 100vh;
+
+  border-radius: 0;
+  position: fixed;
+  background-color: rgba($text-color, $alpha: 0.5);
+}
+
+header {
+  @include displayFlex(flex-end, flex-end);
+  width: 24rem;
+  height: 2rem;
+  background-color: $background-2;
+  border-radius: 0.3rem 0.3rem 0rem 0rem;
+
+  .close-icon {
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+}
+
+main {
+  @include displayFlex;
+  border-radius: 0rem 0rem 0.3rem 0.3rem;
+  position: relative;
+  background-color: $white;
+  width: 24rem;
+  height: 7rem;
+  padding-bottom: 0.5rem;
+
+  .content {
+    font-size: 0.8rem;
+  }
+}

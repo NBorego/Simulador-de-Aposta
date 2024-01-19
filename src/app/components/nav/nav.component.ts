@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AttributesService } from 'src/app/services/attributes/attributes.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-  constructor() {}
+  public attributes = inject(AttributesService);
 }

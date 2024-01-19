@@ -6,6 +6,8 @@ import { LockedCardComponent } from './locked-card/locked-card.component';
 import { ImprovementComponent } from './improvement/improvement.component';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
+import { NotificationComponent } from './notification/notification.component';
+import { LucideAngularModule, X } from 'lucide-angular';
 
 @NgModule({
   declarations: [
@@ -13,15 +15,17 @@ import { RouterModule } from '@angular/router';
     InfoComponent,
     LockedCardComponent,
     ImprovementComponent,
-    NavComponent
+    NavComponent,
+    NotificationComponent
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LucideAngularModule.pick({ X })],
   exports: [
     GameComponent,
     InfoComponent,
     LockedCardComponent,
     ImprovementComponent,
-    NavComponent
+    NavComponent,
+    NotificationComponent
   ]
 })
 export class ComponentsModule {}

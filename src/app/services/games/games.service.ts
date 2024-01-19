@@ -64,6 +64,16 @@ export class GamesService {
     }
   ];
 
+  public secret = <Game>{
+    id: 1,
+    name: 'Campeonato de Poker',
+    gain: 5000,
+    loss: 500,
+    chance: 30,
+    level: 20,
+    clicked: false
+  };
+
   constructor(public attributes: AttributesService) {}
 
   bet(result: number, id: number) {
@@ -71,6 +81,17 @@ export class GamesService {
       this.attributes.money += this.games[id].gain;
     } else {
       this.attributes.money -= this.games[id].loss;
+      if (this.attributes.money < 0) this.attributes.money = 0;
+    }
+  }
+
+  betSecret(result: number) {
+    if (result <= this.secret.chance) {
+      this.attributes.money += this.secret.gain;
+      this.attributes.winner = true;
+    } else {
+      this.attributes.money -= this.secret.loss;
+      if (this.attributes.money < 0) this.attributes.money = 0;
     }
   }
 }

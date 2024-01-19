@@ -1,1 +1,35 @@
-<p>locked-card works!</p>
+<section>
+  <main>
+    <div class="title">
+      <h1>{{ this.attributes.level < 20 ? '???' : name }}</h1>
+      <strong class="chance">
+        Chance:
+        <span> {{ this.attributes.level < 20 ? '???' : chance }}% </span>
+      </strong>
+    </div>
+
+    <hr />
+
+    <div class="info">
+      <strong class="gain">
+        Ganho:
+        <span>{{ this.attributes.level < 20 ? '???' : convert(gain) }}</span>
+      </strong>
+      <strong class="loss">
+        Perda:
+        <span>{{ this.attributes.level < 20 ? '???' : convert(loss) }}</span>
+      </strong>
+    </div>
+  </main>
+
+  <span *ngIf="this.attributes.level < 20; else buttonAction" class="action">
+    ???
+  </span>
+
+  <ng-template #buttonAction>
+    <button class="action" (click)="actionButton()">
+      <span> </span>
+      {{ action }}
+    </button>
+  </ng-template>
+</section>

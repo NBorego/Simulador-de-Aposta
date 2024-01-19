@@ -1,0 +1,67 @@
+@import 'src/scss/_variables.scss';
+@import 'src/scss/_mixins.scss';
+
+section {
+  @include displayFlex(space-between, center, column);
+
+  width: 24rem;
+  background-color: $background-2;
+  letter-spacing: 0.05rem;
+  padding: 0.5rem;
+
+  main {
+    width: 100%;
+
+    .title {
+      @include displayFlex(space-between, center, row);
+      margin: 0.5rem;
+
+      h1 {
+        cursor: pointer;
+        font-weight: 600;
+        color: $blue;
+      }
+    }
+
+    .chance span {
+      color: $red;
+    }
+
+    hr {
+      margin: 0.5rem;
+      border: 1px solid $gray;
+    }
+
+    .info {
+      @include displayFlex(space-between, center, row);
+      margin: 0.5rem;
+
+      .gain span {
+        color: $green;
+      }
+
+      .loss span {
+        color: $red;
+      }
+    }
+  }
+
+  .action {
+    @include displayFlex;
+    width: 100%;
+    height: 2.6rem;
+    margin: 0.5rem;
+    color: $white;
+    font-weight: 600;
+    background-color: $gray;
+    cursor: default;
+  }
+
+  button.action {
+    background-color: $blue;
+    cursor: pointer;
+
+    transition: all 0.1s ease-in-out;
+    @include buttonDarken($blue, 10);
+  }
+}

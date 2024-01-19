@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { ActionService } from 'src/app/services/action/action.service';
 import { AttributesService } from 'src/app/services/attributes/attributes.service';
 import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
@@ -14,20 +14,20 @@ export class GameComponent implements OnDestroy {
   action: string = 'Ação';
   interval?: NodeJS.Timeout;
 
-  constructor(
-    private conversionService: ConvertToBRLService,
-    public actionService: ActionService,
-    public gamesService: GamesService,
-    public attributes: AttributesService
-  ) {}
+  private conversionService = inject(ConvertToBRLService);
+  public actionService = inject(ActionService);
+  public attributes = inject(AttributesService);
+  public gamesService = inject(GamesService);
 
-  convert = (money: number): string =>
-    this.conversionService.convertToBRL(money);
+  convert(money: number): string {
+    return this.conversionService.convertToBRL(money);
+  }
 
   changeColor(value: number): string {
+    console.log('teste');
     if (value < 30) return 'red';
 
-    if (value >= 30 && value < 70) return 'yellow';
+    if (value > 29 && value < 70) return 'yellow';
 
     return 'green';
   }

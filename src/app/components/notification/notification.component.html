@@ -1,0 +1,10 @@
+<div *ngIf="isOpen" class="background">
+  <header>
+    <lucide-icon name="x" class="close-icon" (click)="close()"></lucide-icon>
+  </header>
+  <main>
+    <div class="content">
+      <ng-content select="h1"></ng-content>
+    </div>
+  </main>
+</div>

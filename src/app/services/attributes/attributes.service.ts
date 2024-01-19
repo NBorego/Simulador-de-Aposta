@@ -4,15 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AttributesService {
-  public money: number;
-  public level: number;
-  public currentXP: number;
-  public maxXP: number;
-
-  constructor() {
-    this.money = 0;
-    this.level = 4;
-    this.currentXP = 90;
-    this.maxXP = 100;
-  }
+  public money: number = 0;
+  public level: number = 1;
+  public currentXP: number = 0;
+  public maxXP: number = 100;
+  public winner: boolean = false;
 }

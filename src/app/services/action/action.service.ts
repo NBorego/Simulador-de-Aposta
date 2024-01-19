@@ -7,7 +7,6 @@ import { GamesService } from '../games/games.service';
 })
 export class ActionService {
   public counters: { [key: number]: number } = {};
-  public color: string = '#2563eb';
 
   constructor(
     public attributes: AttributesService,
@@ -16,7 +15,6 @@ export class ActionService {
 
   getAction(componentID: number): string {
     this.counters[componentID] = 3;
-    this.color = '#2563eb';
     return `${this.counters[componentID] || 0}`;
   }
 

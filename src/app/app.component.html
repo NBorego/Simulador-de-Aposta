@@ -1,3 +1,11 @@
+<app-notification *ngIf="attributes.level >= 20">
+  <h1>Voce liberou o final do jogo!</h1>
+</app-notification>
+
+<app-notification *ngIf="attributes.winner">
+  <h1>Parabéns, voce finalizou o jogo!</h1>
+</app-notification>
+
 <div class="app-body">
   <h1 class="title-app">Simulador de aposta</h1>
   <app-info></app-info>

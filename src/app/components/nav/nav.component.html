@@ -17,7 +17,9 @@
     </li>
 
     <li>
-      <a [routerLink]="['secreto']" [routerLinkActive]="['active-link']">???</a>
+      <a [routerLink]="['secreto']" [routerLinkActive]="['active-link']">
+        {{ attributes.level < 20 ? '???' : 'Final' }}
+      </a>
     </li>
   </ul>
 </nav>
