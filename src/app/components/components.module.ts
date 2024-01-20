@@ -8,6 +8,8 @@ import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
 import { LucideAngularModule, X } from 'lucide-angular';
+import { CurrencyBRLPipe } from '../pipes/currency-brl.pipe';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { LucideAngularModule, X } from 'lucide-angular';
     LockedCardComponent,
     ImprovementComponent,
     NavComponent,
-    NotificationComponent
+    NotificationComponent,
+    CurrencyBRLPipe,
+    FooterComponent
   ],
   imports: [CommonModule, RouterModule, LucideAngularModule.pick({ X })],
   exports: [
@@ -25,7 +29,8 @@ import { LucideAngularModule, X } from 'lucide-angular';
     LockedCardComponent,
     ImprovementComponent,
     NavComponent,
-    NotificationComponent
+    NotificationComponent,
+    FooterComponent
   ]
 })
 export class ComponentsModule {}

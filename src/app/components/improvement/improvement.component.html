@@ -20,7 +20,7 @@
     </span>
 
     <ng-template #priceSpan>
-      <span>{{ convert(improvement.improvements[this.id].price) }}</span>
+      <span>{{ improvement.improvements[this.id].price | currencyBRL }}</span>
     </ng-template>
   </button>
 </section>

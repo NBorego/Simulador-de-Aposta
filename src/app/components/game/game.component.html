@@ -14,10 +14,11 @@
 
     <div class="info">
       <strong class="gain">
-        Ganho: <span>{{ convert(gamesService.games[this.id].gain) }}</span>
+        Ganho:
+        <span>{{ gamesService.games[this.id].gain | currencyBRL }}</span>
       </strong>
       <strong class="loss">
-        Perda: <span>{{ convert(gamesService.games[this.id].loss) }}</span>
+        Perda: <span>{{ gamesService.games[this.id].loss | currencyBRL }}</span>
       </strong>
     </div>
   </main>

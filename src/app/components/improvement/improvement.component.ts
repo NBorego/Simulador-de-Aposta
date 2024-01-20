@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { AttributesService } from 'src/app/services/attributes/attributes.service';
-import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
 import { GamesService } from 'src/app/services/games/games.service';
 import { ImprovementService } from 'src/app/services/improvement/improvement.service';
 
@@ -12,23 +11,13 @@ import { ImprovementService } from 'src/app/services/improvement/improvement.ser
 export class ImprovementComponent {
   @Input() id: number = 0;
 
-  constructor(
-    private conversionService: ConvertToBRLService,
-    public improvement: ImprovementService,
-    public gameService: GamesService,
-    public attributes: AttributesService
-  ) {}
-
-  convert = (money: number): string =>
-    this.conversionService.convertToBRL(money);
+  public improvement = inject(ImprovementService);
+  public gameService = inject(GamesService);
+  public attributes = inject(AttributesService);
 
   actionButton() {
     if (this.attributes.money < this.improvement.improvements[this.id].price) {
-      return alert(
-        `Voce precisa ter ${this.conversionService.convertToBRL(
-          this.improvement.improvements[this.id].price
-        )} para comprar essa melhoria.`
-      );
+      return alert(`Voce não tem dinheiro suficiente para apostar!`);
     }
 
     if (this.improvement.improvements[this.id].buy) return;

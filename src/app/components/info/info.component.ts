@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AttributesService } from 'src/app/services/attributes/attributes.service';
-
-import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
 
 @Component({
   selector: 'app-info',
@@ -9,12 +7,5 @@ import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent {
-  constructor(
-    private conversionService: ConvertToBRLService,
-    public attributes: AttributesService
-  ) {}
-
-  convert(money: number): string {
-    return this.conversionService.convertToBRL(money);
-  }
+  public attributes = inject(AttributesService);
 }

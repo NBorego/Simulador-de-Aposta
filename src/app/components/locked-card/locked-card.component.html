@@ -1,10 +1,14 @@
 <section>
   <main>
     <div class="title">
-      <h1>{{ this.attributes.level < 20 ? '???' : name }}</h1>
+      <h1>
+        {{ this.attributes.level < 20 ? '???' : gamesService.secret.name }}
+      </h1>
       <strong class="chance">
         Chance:
-        <span> {{ this.attributes.level < 20 ? '???' : chance }}% </span>
+        <span>
+          {{ this.attributes.level < 20 ? '???' : gamesService.secret.chance }}%
+        </span>
       </strong>
     </div>
 
@@ -13,11 +17,19 @@
     <div class="info">
       <strong class="gain">
         Ganho:
-        <span>{{ this.attributes.level < 20 ? '???' : convert(gain) }}</span>
+        <span>{{
+          this.attributes.level < 20
+            ? '???'
+            : (gamesService.secret.gain | currencyBRL)
+        }}</span>
       </strong>
       <strong class="loss">
         Perda:
-        <span>{{ this.attributes.level < 20 ? '???' : convert(loss) }}</span>
+        <span>{{
+          this.attributes.level < 20
+            ? '???'
+            : (gamesService.secret.loss | currencyBRL)
+        }}</span>
       </strong>
     </div>
   </main>

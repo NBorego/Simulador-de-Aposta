@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { ActionService } from 'src/app/services/action/action.service';
 import { AttributesService } from 'src/app/services/attributes/attributes.service';
-import { ConvertToBRLService } from 'src/app/services/convert-to-brl/convert-to-brl.service';
 import { GamesService } from 'src/app/services/games/games.service';
 
 @Component({
@@ -14,14 +13,9 @@ export class GameComponent implements OnDestroy {
   action: string = 'Ação';
   interval?: NodeJS.Timeout;
 
-  private conversionService = inject(ConvertToBRLService);
   public actionService = inject(ActionService);
   public attributes = inject(AttributesService);
   public gamesService = inject(GamesService);
-
-  convert(money: number): string {
-    return this.conversionService.convertToBRL(money);
-  }
 
   changeColor(value: number): string {
     console.log('teste');
@@ -36,12 +30,7 @@ export class GameComponent implements OnDestroy {
     if (this.gamesService.games[this.id].clicked === true) return;
 
     if (this.attributes.money < this.gamesService.games[this.id].loss) {
-      alert(
-        `Voce precisa ter ${this.conversionService.convertToBRL(
-          this.gamesService.games[this.id].loss
-        )} para apostar!`
-      );
-      return;
+      return alert(`Voce não tem dinheiro suficiente para apostar!`);
     }
 
     this.action = this.actionService.getAction(

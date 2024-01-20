@@ -43,7 +43,7 @@ export class SecretService {
         this.attributes.level++;
       }
 
-      callback('Ação');
+      callback('Jogar');
     }, 3000);
 
     return interval;

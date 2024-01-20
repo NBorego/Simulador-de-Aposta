@@ -1,0 +1,23 @@
+@import 'src/scss/variables';
+@import 'src/scss/mixins';
+
+* {
+  color: $gray;
+}
+
+small {
+  padding: 0.1rem;
+  text-align: center;
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  a {
+    color: $blue;
+    text-decoration: underline;
+
+    &:hover {
+      color: darken($blue, 20);
+    }
+  }
+}
