@@ -14,15 +14,13 @@ div {
   background-color: $white;
   font-size: 1.1rem;
 
-  div {
+  .level-component {
+    @include displayFlex(space-between, center, row);
     padding-inline: 0.5rem;
-
-    .level-component {
-      @include displayFlex(space-between, center, row);
-    }
   }
 
   .info-money {
+    padding-inline: 0.5rem;
     color: $green;
   }
 }

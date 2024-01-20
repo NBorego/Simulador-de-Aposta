@@ -37,7 +37,7 @@ export class ImprovementService {
     },
     {
       id: 5,
-      name: 'Bet',
+      name: 'Bet esportivo',
       price: 1500,
       chance: 80,
       buy: false
